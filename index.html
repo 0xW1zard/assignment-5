@@ -1,11 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
+
+    <!-- font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet">
+
+    <!-- deisy ui -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        * {
+            font-family: "Geist", sans-serif;
+        }
+    </style>
 </head>
-<body>
-    <h1>HIIIIIIIIIIIIII</h1>
+
+<body class="bg-[#F8FAFC]">
+    <header>
+        <div class="navbar bg-base-100 shadow-sm flex justify-between">
+            <div class="flex items-center justify-center gap-3 ml-6">
+                <img class="w-10" src="assets/github-logo.png" alt="">
+                <a class="font-semibold text-xl">GitHub Issues Tracker</a>
+            </div>
+            <div class="flex gap-2 mr-5">
+                <label class="input input-bordered flex items-center gap-2 w-full max-w-md">
+                    <i class="fa-solid fa-magnifying-glass text-gray-400"></i>
+                    <input type="text" class="grow" placeholder="Search issues..." />
+                </label>
+                <button class="btn btn-primary flex justify-center"> <span><i class="fa-solid fa-plus"></i></span> New
+                    Issue</button>
+            </div>
+        </div>
+    </header>
+
+    <section class="w-10/12 mx-auto mt-16 ">
+
+        <div class="bg-white shadow-md p-6 flex gap-3 rounded-md">
+            <button class="btn btn-outline btn-primary py-5 px-8 font-semibold text-[16px]">All</button>
+            <button class="btn btn-outline btn-primary py-5 px-8 font-semibold text-[16px]">Open</button>
+            <button class="btn btn-outline btn-primary py-5 px-8 font-semibold text-[16px]">Closed</button>
+        </div>
+
+    </section>
 </body>
+
 </html>
