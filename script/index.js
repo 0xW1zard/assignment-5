@@ -1,12 +1,24 @@
 let allData = [];
 
+const spinnerLoading = (status) => {
+  if (status == true) {
+    document.getElementById("spinner").classList.remove("hidden");
+    document.getElementById("main-box").classList.add("hidden");
+  } else {
+    document.getElementById("spinner").classList.add("hidden");
+    document.getElementById("main-box").classList.remove("hidden");
+  }
+};
+
 const load = () => {
+  spinnerLoading(true);
   fetch("https://phi-lab-server.vercel.app/api/v1/lab/issues")
     .then((res) => res.json())
     .then((info) => {
       allData = info.data;
       document.getElementById("btn-all").click();
     });
+  spinnerLoading(false);
 };
 
 load();
@@ -268,7 +280,8 @@ function modalBox(id) {
 
 document.getElementById("search-btn").addEventListener("click", function () {
   const searchInput = document.getElementById("search-box").value;
-  console.log(searchInput);
+
+  spinnerLoading(true);
 
   const Container = document.getElementById("main-container");
   Container.innerHTML = "";
@@ -335,5 +348,7 @@ document.getElementById("search-btn").addEventListener("click", function () {
       `;
         Container.append(div);
       });
+
+      spinnerLoading(false);
     });
 });
