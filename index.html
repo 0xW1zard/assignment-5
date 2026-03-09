@@ -60,7 +60,7 @@
             <div class="flex justify-center items-center gap-3">
                 <img class="p-2 rounded-full bg-[#ECE4FF]" src="assets/Aperture.png" alt="">
                 <div>
-                    <h3 class="font-semibold text-[20px]">50 Issues</h3>
+                    <h3 class="font-semibold text-[20px]"><span id="total">0</span> Issues</h3>
                     <p class="text-[#64748B]">Track and manage your project issues</p>
                 </div>
             </div>
@@ -81,7 +81,8 @@
 
         <div id="main-container" class="grid grid-cols-4 gap-4 p-4">
 
-            <div class="max-w-md h-full bg-white border border-gray-100 rounded-lg shadow-sm overflow-hidden">
+            <!-- <div onclick="my_modal_5.showModal()"
+                class="max-w-md h-full bg-white border border-gray-100 rounded-lg shadow-sm overflow-hidden">
 
                 <div class="h-1 bg-[#00A96E]"></div>
 
@@ -135,25 +136,17 @@
                     </div>
 
                 </div>
-            </div>
+            </div> -->
         </div>
     </section>
+
+    
+    <dialog id="my_modal_5" class="modal modal-bottom sm:modal-middle">
+        <div id="modal-box" class="modal-box space-y-4">
+           
+        </div>
+    </dialog>
     <script src="script/index.js"></script>
 </body>
 
 </html>
-
-
-<!-- "id": 1,
-"title": "Fix navigation menu on mobile devices",
-"description": "The navigation menu doesn't collapse properly on mobile devices. Need to fix the responsive behavior.",
-"status": "open",
-"labels": [
-"bug",
-"help wanted"
-],
-"priority": "high",
-"author": "john_doe",
-"assignee": "jane_smith",
-"createdAt": "2024-01-15T10:30:00Z",
-"updatedAt": "2024-01-15T10:30:00Z" -->
