@@ -88,5 +88,91 @@ document.getElementById("btn-box").addEventListener("click", function (event) {
       `;
       Container.append(div);
     });
-  } 
+  } else if (btnClick === "btn-open") {
+    const openIssues = allData.filter((single) => single.status === "open");
+    const Container = document.getElementById("main-container");
+    Container.innerHTML = "";
+
+    openIssues.forEach((single) => {
+      let priorityColors = "";
+      if (single.priority.toLowerCase() === "high") {
+        priorityColors = "bg-[#FEECEC] text-[#EF4444]";
+      } else if (single.priority.toLowerCase() === "medium") {
+        priorityColors = "bg-[#FFF6D1] text-[#F59E0B]";
+      } else {
+        priorityColors = "bg-[#EEEFF2] text-[#6B7280]";
+      }
+
+      const div = document.createElement("div");
+      div.innerHTML = `
+            <div class="max-w-md h-full bg-white border border-gray-100 rounded-lg shadow-sm overflow-hidden mb-4">
+                <div class="h-1 bg-[#15C858]"></div>
+                <div class="p-5">
+                    <div class="flex items-center justify-between mb-4">
+                        <div><img class="w-8 h-8" src="assets/Open-Status.png" alt=""></div>
+                        <span class="${priorityColors} uppercase text-sm font-semibold px-4 py-1.5 rounded-full">${single.priority}</span>
+                    </div>
+                    <h3 class="text-xl font-semibold text-[#1F2937] leading-tight mb-2 mt-8">${single.title}</h3>
+                    <p class="text-base text-[#6B7280] leading-relaxed mb-5">${single.description}</p>
+                    <div class="flex items-center gap-3 mb-5">
+                        ${lbl(single.labels)}
+                    </div>
+                    <hr class="border-gray-100 -mx-5 mb-4">
+                    <div class="space-y-1.5">
+                            <p class="text-sm text-[#6B7280]">
+                                #${single.id} by <span class="font-medium">${single.author}</span>
+                            </p>
+                            <p class="text-sm text-[#6B7280]">
+                               <span>${single.updatedAt}</span>
+                            </p>
+                    </div>
+                </div>
+            </div>
+      `;
+      Container.append(div);
+    });
+  } else if (btnClick === "btn-closed") {
+    const closedIssues = allData.filter((single) => single.status === "closed");
+    const Container = document.getElementById("main-container");
+    Container.innerHTML = "";
+
+    closedIssues.forEach((single) => {
+      let priorityColors = "";
+      if (single.priority.toLowerCase() === "high") {
+        priorityColors = "bg-[#FEECEC] text-[#EF4444]";
+      } else if (single.priority.toLowerCase() === "medium") {
+        priorityColors = "bg-[#FFF6D1] text-[#F59E0B]";
+      } else {
+        priorityColors = "bg-[#EEEFF2] text-[#6B7280]";
+      }
+
+      const div = document.createElement("div");
+      div.innerHTML = `
+            <div class="max-w-md h-full bg-white border border-gray-100 rounded-lg shadow-sm overflow-hidden mb-4">
+                <div class="h-1 bg-blue-400"></div>
+                <div class="p-5">
+                    <div class="flex items-center justify-between mb-4">
+                        <div><img class="w-8 h-8" src="assets/Closed- Status .png" alt=""></div>
+                        <span class="${priorityColors} uppercase text-sm font-semibold px-4 py-1.5 rounded-full">${single.priority}</span>
+                    </div>
+                    <h3 class="text-xl font-semibold text-[#1F2937] leading-tight mb-2 mt-8">${single.title}</h3>
+                    <p class="text-base text-[#6B7280] leading-relaxed mb-5">${single.description}</p>
+                    <div class="flex items-center gap-3 mb-5">
+                        ${lbl(single.labels)}
+                    </div>
+                    <hr class="border-gray-100 -mx-5 mb-4">
+                    <div class="space-y-1.5">
+                            <p class="text-sm text-[#6B7280]">
+                                #${single.id} by <span class="font-medium">${single.author}</span>
+                            </p>
+                            <p class="text-sm text-[#6B7280]">
+                               <span>${single.updatedAt}</span>
+                            </p>
+                    </div>
+                </div>
+            </div>
+      `;
+      Container.append(div);
+    });
+  }
 });
