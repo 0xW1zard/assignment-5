@@ -198,7 +198,6 @@ document.getElementById("btn-box").addEventListener("click", function (event) {
 });
 
 function modalBox(id) {
-
   const singleData = allData.find((item) => item.id === id);
 
   if (!singleData) return;
@@ -266,3 +265,75 @@ function modalBox(id) {
 
   document.getElementById("my_modal_5").showModal();
 }
+
+document.getElementById("search-btn").addEventListener("click", function () {
+  const searchInput = document.getElementById("search-box").value;
+  console.log(searchInput);
+
+  const Container = document.getElementById("main-container");
+  Container.innerHTML = "";
+
+  const allBtn = document.querySelectorAll("#btn-box .btn");
+
+  allBtn.forEach((btn) => {
+    btn.classList.remove("btn-primary");
+    btn.classList.add("btn-outline");
+  });
+
+  const url = `https://phi-lab-server.vercel.app/api/v1/lab/issues/search?q=${searchInput}`;
+
+  fetch(url)
+    .then((res) => res.json())
+    .then((info) => {
+      const allSearchData = info.data;
+      totalCount(allSearchData);
+      allSearchData.forEach((single) => {
+        let priorityColors = "";
+        if (single.priority === "high") {
+          priorityColors = "bg-[#FEECEC] text-[#EF4444]";
+        } else if (single.priority === "medium") {
+          priorityColors = "bg-[#FFF6D1] text-[#F59E0B]";
+        } else {
+          priorityColors = "bg-[#EEEFF2] text-[#6B7280]";
+        }
+
+        let topBarColor = "";
+        let statusIcon = "";
+        if (single.status.toLowerCase() === "open") {
+          topBarColor = "bg-[#15C858]";
+          statusIcon = "assets/Open-Status.png";
+        } else {
+          topBarColor = "bg-blue-400";
+          statusIcon = "assets/Closed- Status .png";
+        }
+
+        const div = document.createElement("div");
+        div.innerHTML = `
+            <div onclick="modalBox(${single.id})" class="max-w-md h-full bg-white border border-gray-100 rounded-lg shadow-sm overflow-hidden mb-4">
+                <div class="h-1 ${topBarColor}"></div>
+                <div class="p-5">
+                    <div class="flex items-center justify-between mb-4">
+                        <div><img class="w-8 h-8" src="${statusIcon}" alt=""></div>
+                        <span class="${priorityColors} uppercase text-sm font-semibold px-4 py-1.5 rounded-full">${single.priority}</span>
+                    </div>
+                    <h3 class="text-xl font-semibold text-[#1F2937] leading-tight mb-2 mt-8">${single.title}</h3>
+                    <p class="text-base text-[#6B7280] leading-relaxed mb-5">${single.description}</p>
+                    <div class="flex items-center gap-3 mb-5">
+                        ${lbl(single.labels)}
+                    </div>
+                    <hr class="border-gray-100 -mx-5 mb-4">
+                    <div class="space-y-1.5">
+                            <p class="text-sm text-[#6B7280]">
+                                #${single.id} by <span class="font-medium">${single.author}</span>
+                            </p>
+                            <p class="text-sm text-[#6B7280]">
+                               <span>${single.updatedAt}</span>
+                            </p>
+                    </div>
+                </div>
+            </div>
+      `;
+        Container.append(div);
+      });
+    });
+});
