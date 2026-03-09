@@ -6,7 +6,7 @@ const singIn = () => {
 
   if (userName === "admin" && password === "admin123") {
     alert("Login successful");
-    window.location.href = "index.html";
+    window.location.href = "home.html";
   } else {
     alert("Wrong Credential");
   }

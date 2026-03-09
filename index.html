@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+    <title>Login</title>
 
     <!-- font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,10 +15,6 @@
     <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
-        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <style>
         * {
@@ -28,125 +24,38 @@
 </head>
 
 <body class="bg-[#F8FAFC]">
-    <header>
-        <div class="navbar bg-base-100 shadow-sm flex justify-between">
-            <div class="flex items-center justify-center gap-3 ml-6">
-                <img class="w-10" src="assets/github-logo.png" alt="">
-                <a class="font-semibold text-xl">GitHub Issues Tracker</a>
-            </div>
-            <div class="flex gap-2 mr-5">
-                <label class="input input-bordered flex items-center gap-2 w-full max-w-md">
-                    <i class="fa-solid fa-magnifying-glass text-gray-400"></i>
-                    <input id="search-box" type="text" class="grow" placeholder="Search issues..." />
-                </label>
-                <button id="search-btn" class="btn btn-primary flex justify-center"> <span><i class="fa-solid fa-plus"></i></span> New
-                    Issue</button>
-            </div>
+    <section class="max-w-lg mx-auto text-center space-y-9 shadow-lg mt-28 p-4 bg-white">
+        <div class="">
+            <img class="mx-auto mb-6" src="assets/github-logo.png" alt="">
+            <h3 class="text-[24px] font-semibold ">GitHub Issues Tracker</h3>
+            <p class="text-[#64748B]">Sign in to manage your issues</p>
         </div>
-    </header>
+        <div class="">
+            <fieldset class="fieldset p-4 mx-auto">
 
-    <section class="w-10/12 mx-auto mt-16 ">
+                <label class="label text-[16px] font-medium text-[#1F2937]">Username</label>
+                <input id="input-username" type="text" class="input w-full" placeholder="Enter Username" />
+                <small class="text-[14px] text-[#4A00FF] flex justify-start mb-6">Default: admin</small>
 
-        <div id="btn-box" class="bg-white shadow-md p-6 flex gap-3 rounded-md">
-            <button id="btn-all" class="btn btn-outline btn-primary py-5 px-8 font-semibold text-[16px]">All</button>
-            <button id="btn-open" class="btn btn-outline btn-primary py-5 px-8 font-semibold text-[16px]">Open</button>
-            <button id="btn-closed"
-                class="btn btn-outline btn-primary py-5 px-8 font-semibold text-[16px]">Closed</button>
+                <label class="label text-[16px] font-medium text-[#1F2937]">Password</label>
+                <input  id="input-password" type="password" class="input w-full" placeholder="Password" />
+                <small class="text-[14px] text-[#4A00FF] flex justify-start mb-3">Default: admin123</small>
+
+                <button id="btn-singIn" onclick="singIn()" class="btn btn-primary mt-4 p-6 rounded-lg">Sing In</button>
+            </fieldset>
         </div>
+        <div>
+            <div class="divider text-neutral-500">OR</div>
+            <small class="text-[#64748B]">Demo Credentials:</small>
+            <p class="py-5 border border-gray-400 w-fit mx-auto py-4 px-6 rounded-xl bg-slate-50 mt-3">
+                <span class="font-semibold">Username:</span> admin <br>
+                <span class="font-semibold">Password:</span> admin123
+            </p>
+        </div>
+
     </section>
 
-    <section class="w-10/12 mx-auto mt-10 shadow-md">
-        <div class="bg-white p-6 flex justify-between items-center">
-            <div class="flex justify-center items-center gap-3">
-                <img class="p-2 rounded-full bg-[#ECE4FF]" src="assets/Aperture.png" alt="">
-                <div>
-                    <h3 class="font-semibold text-[20px]"><span id="total">0</span> Issues</h3>
-                    <p class="text-[#64748B]">Track and manage your project issues</p>
-                </div>
-            </div>
-            <div class="flex gap-3">
-                <div class="flex items-center gap-2">
-                    <div class="p-1.5 bg-green-500 rounded-full"></div>
-                    <p>Open</p>
-                </div>
-                <div class="flex items-center gap-2">
-                    <div class="p-1.5 bg-blue-400 rounded-full"></div>
-                    <p>Closed</p>
-                </div>
-            </div>
-        </div>
-        <hr class="border-gray-300 mb-4">
-
-        <!-- cards -->
-
-        <div id="main-container" class="grid grid-cols-4 gap-4 p-4">
-
-            <!-- <div onclick="my_modal_5.showModal()"
-                class="max-w-md h-full bg-white border border-gray-100 rounded-lg shadow-sm overflow-hidden">
-
-                <div class="h-1 bg-[#00A96E]"></div>
-
-                <div class="p-5">
-
-                    <div class="flex items-center justify-between mb-4">
-                        <div><img class="w-8 h-8" src="assets/Closed- Status .png" alt=""></div>
-                        <span
-                            class="bg-[#FEECEC] text-[#EF4444] text-sm font-semibold px-4 py-1.5 rounded-full">HIGH</span>
-                    </div>
-
-                    <h3 class="text-xl font-semibold text-[#1F2937] leading-tight mb-2 mt-8">Fix Navigation Menu On
-                        Mobile
-                        Devices</h3>
-
-                    <p class="text-base text-[#6B7280] leading-relaxed mb-5">The navigation menu doesn't collapse
-                        properly on mobile devices...</p>
-
-                    <div class="flex items-center gap-3 mb-5">
-                        <div
-                            class="flex items-center gap-1.5 bg-red-100 border border-orange-300 text-red-600 px-3.5 py-1 rounded-full">
-                            <i class="fa-solid fa-bug"></i>
-                            <span class="font-medium tracking-wide text-xs">Bug</span>
-                        </div>
-                        <div
-                            class="flex items-center gap-1.5 bg-orange-100 border border-orange-300 text-red-600 px-3.5 py-1 rounded-full">
-                            <i class="fa-solid fa-life-ring text-xs"></i>
-                            <span class="font-medium tracking-wide text-xs">Help Wanted</span>
-                        </div>
-                    </div>
-
-                    <hr class="border-gray-100 -mx-5 mb-4">
-
-                    <div class="flex justify-between space-y-1.5">
-                        <div>
-                            <p class="text-sm text-[#6B7280]">
-                                #1 by <span class="font-medium">john_doe</span>
-                            </p>
-                            <p class="text-sm text-[#6B7280]">
-                                Assignee: <span class="font-medium">john_doe</span>
-                            </p>
-                        </div>
-                        <div>
-                            <p class="text-sm text-[#6B7280]">
-                                Created At: <span>1/15/2024</span>
-                            </p>
-                            <p class="text-sm text-[#6B7280]">
-                                Updated At: <span>1/15/2024</span>
-                            </p>
-                        </div>
-                    </div>
-
-                </div>
-            </div> -->
-        </div>
-    </section>
-
-    
-    <dialog id="my_modal_5" class="modal modal-bottom sm:modal-middle">
-        <div id="modal-box" class="modal-box space-y-4">
-           
-        </div>
-    </dialog>
-    <script src="script/index.js"></script>
+    <script src="script/login.js"></script>
 </body>
 
 </html>
